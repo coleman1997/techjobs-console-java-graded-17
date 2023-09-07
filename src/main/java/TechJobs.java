@@ -63,7 +63,8 @@ public class TechJobs {
 
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
-                } else {
+                }
+                else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
@@ -77,7 +78,7 @@ public class TechJobs {
         Boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
+        // Put the choices in an ordered structure ,so we can
         // associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
@@ -119,7 +120,16 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.isEmpty()) {
+            System.out.print("No Results");
+        }
+        else
+            for (HashMap<String, String> jobs : someJobs) {
+                System.out.println("\n" + "*****");
+            for (Map.Entry<String, String> job : jobs.entrySet()) {
+                System.out.println(job.getKey() + ": " + job.getValue());
+            }
+                System.out.println("*****");
+        }
     }
 }
